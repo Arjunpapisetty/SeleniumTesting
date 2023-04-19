@@ -21,20 +21,21 @@ public class PageLoadTest {
 	/**
 	 * @param args
 	 */
+	@SuppressWarnings("deprecation")
+	@Deprecated
 	public static void main(String[] args) {
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofMinutes(2));
 		driver.manage().window().maximize();
 	Instant startTime =	Instant.now();
 	System.out.println(startTime.toString() );
 		driver.get("https://www.hyrtutorials.com/");
 		Instant endTime =	Instant.now();
-		
 		Duration duration = Duration.between(startTime, endTime);
 		System.out.println(duration.toMillis()+ " milli secs");
 		System.out.println(driver.getTitle());
-		
+	
 		driver.quit();
 
 
